@@ -1,0 +1,25 @@
+type Query {
+  items(first: Int, last: Int, after: String, before: String): PaginatedItems!
+}
+
+type Mutation {
+  removeItem(id: ID!): ID
+}
+
+type PaginatedItems {
+  nodes: [Item!]!
+  pageInfo: PageInfo!
+}
+
+type PageInfo {
+  endCursor: String
+  hasNextPage: Boolean!
+  hasPreviousPage: Boolean!
+  startCursor: String
+  total: Int!
+}
+
+type Item {
+  id: ID!
+  name: String!
+}
